@@ -1,5 +1,38 @@
-#!/usr/bin/env bash
-# Factorize as many numbers as possible into a product of two smaller numbers.
 
-gcc factors.c -o a
-./a $1
+#!/usr/bin/python3
+"""
+We will now factorize numbers
+"""
+from sys import argv
+
+
+def factorize(ourvalue):
+    """
+    We factorize numbers
+    :param value: print a simple decomposition of an integer > 1."
+    :return:
+    """
+    i = 2
+
+    if ourvalue < 2:
+        return
+    print()
+    while ourvalue % i:
+        i += 1
+    print("{:.0f}={:.0f}*{:.0f}".format(ourvalue, ourvalue / i, i))
+
+if len(argv) != 2:
+    exit()
+
+try:
+    with open(argv[1]) as file:
+        line = file.readline()
+
+        while line != "":
+            ourvalue = int(line.split('\n')[0])
+            factorize(ourvalue)
+            line = file.readline()
+except:
+    pass
+
+
