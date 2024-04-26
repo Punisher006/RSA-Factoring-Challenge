@@ -1,10 +1,8 @@
-
 #!/usr/bin/python3
 """
 We will now factorize numbers
 """
 from sys import argv
-
 
 def factorize(ourvalue):
     """
@@ -34,5 +32,3 @@ try:
             line = file.readline()
 except:
     pass
-
-
