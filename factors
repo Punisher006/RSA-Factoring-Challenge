@@ -1,27 +1,35 @@
-import sys
-import math
+#!/usr/bin/python3
+"""
+We will now factorize numbers
+"""
+from sys import argv
 
-def factorize(n):
-    """Find two prime factors of n."""
-    # Check divisibility from 2 up to the square root of n
-    for i in range(2, int(math.isqrt(n)) + 1):
-        if n % i == 0:
-            return i, n // i
-    return None, None  # In case no factors are found
 
-def main(filename):
-    with open(filename, 'r') as file:
-        n = int(file.read().strip())
-    p, q = factorize(n)
-    if p and q:
-        print(f"{n}={p}*{q}")
-    else:
-        print(f"Failed to factorize {n}")
+def factorize(ourvalue):
+    """
+    We factorize numbers
+    :param value: print a simple decomposition of an integer > 1."
+    :return:
+    """
+    i = 2
 
-if __name__ == "__main__":
-    if len(sys.argv) != 2:
-        print("Usage: ./rsa <filename>")
-        sys.exit(1)
-    filename = sys.argv[1]
-    main(filename)
+    if ourvalue < 2:
+        return
+    print()
+    while ourvalue % i:
+        i += 1
+    print("{:.0f}={:.0f}*{:.0f}".format(ourvalue, ourvalue / i, i))
 
+if len(argv) != 2:
+    exit()
+
+try:
+    with open(argv[1]) as file:
+        line = file.readline()
+
+        while line != "":
+            ourvalue = int(line.split('\n')[0])
+            factorize(ourvalue)
+            line = file.readline()
+except:
+    pass
